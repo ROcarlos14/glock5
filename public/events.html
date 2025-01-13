@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Glock 5 Concert Tour 2025</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .events-container {
+            padding: 120px 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .event-list {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .event-item {
+            background-color: #222;
+            padding: 2rem;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .event-date {
+            text-align: center;
+        }
+        
+        .event-details h3 {
+            color: #e6b800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-actions {
+            text-align: right;
+        }
+        
+        @media (max-width: 768px) {
+            .event-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .event-actions {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GLOCK 5 LIVE</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="events.html" class="active">Events</a>
+                <a href="payment.html">Tickets</a>
+                <a href="terms.html">Terms & Policy</a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search events...">
+                <button type="button" id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="events-container">
+        <h1>Tour Dates & Events</h1>
+        <div class="event-list">
+            <div class="event-item">
+                <div class="event-date">
+                    <h3>FEB 15</h3>
+                    <p>2025</p>
+                </div>
+                <div class="event-details">
+                    <h3>Serena Hotel</h3>
+                    <p>Kampala, Uganda</p>
+                    <p>Doors: 6:30 PM | Show: 8:00 PM</p>
+                </div>
+                <div class="event-actions">
+                    <a href="payment.html" class="ticket-btn">Buy Tickets</a>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">
+                    <h3>FEB 22</h3>
+                    <p>2025</p>
+                </div>
+                <div class="event-details">
+                    <h3>Kingdem Kampala</h3>
+                    <p>Kampala, Uganda</p>
+                    <p>Doors: 7:00 PM | Show: 8:30 PM</p>
+                </div>
+                <div class="event-actions">
+                    <a href="payment.html" class="ticket-btn">Buy Tickets</a>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">
+                    <h3>MAR 1</h3>
+                    <p>2025</p>
+                </div>
+                <div class="event-details">
+                    <h3>Lugogo Cricket Oval</h3>
+                    <p>Kampala, Uganda</p>
+                    <p>Doors: 5:30 PM | Show: 7:00 PM</p>
+                </div>
+                <div class="event-actions">
+                    <a href="payment.html" class="ticket-btn">Buy Tickets</a>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">
+                    <h3>MAR 8</h3>
+                    <p>2025</p>
+                </div>
+                <div class="event-details">
+                    <h3>Kololo Airstrip</h3>
+                    <p>Kampala, Uganda</p>
+                    <p>Doors: 6:00 PM | Show: 7:30 PM</p>
+                </div>
+                <div class="event-actions">
+                    <a href="payment.html" class="ticket-btn">Buy Tickets</a>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">
+                    <h3>MAR 15</h3>
+                    <p>2025</p>
+                </div>
+                <div class="event-details">
+                    <h3>Nobview Ntinda</h3>
+                    <p>Kampala, Uganda</p>
+                    <p>Doors: 6:30 PM | Show: 8:00 PM</p>
+                </div>
+                <div class="event-actions">
+                    <a href="payment.html" class="ticket-btn">Buy Tickets</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="terms.html">Privacy Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p>&copy; 2025 Glock 5 Concert Tour. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

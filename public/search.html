@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Glock 5</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .search-container {
+            padding: 120px 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-results {
+            margin-top: 2rem;
+        }
+
+        .result-section {
+            margin-bottom: 3rem;
+        }
+
+        .result-section h2 {
+            color: #e6b800;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #333;
+        }
+
+        .result-item {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .result-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .result-title {
+            color: #e6b800;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-info {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .result-link {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .result-link:hover {
+            color: #e6b800;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .no-results p {
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+        .search-stats {
+            color: #888;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GLOCK 5 LIVE</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="music.html">Music</a>
+                <a href="payment.html">Tickets</a>
+                <a href="terms.html">Terms & Policy</a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="search-container">
+        <div id="searchStats" class="search-stats"></div>
+        <div id="searchResults" class="search-results">
+            <!-- Results will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="terms.html">Privacy Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p>&copy; 2025 Glock 5 Concert Tour. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get search query from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('q');
+            
+            if (searchQuery) {
+                document.getElementById('searchInput').value = searchQuery;
+                performGlobalSearch(searchQuery);
+            }
+
+            function performGlobalSearch(query) {
+                const searchResults = document.getElementById('searchResults');
+                const searchStats = document.getElementById('searchStats');
+                let results = {
+                    events: [],
+                    music: [],
+                    other: []
+                };
+
+                // Search in events data
+                const events = [
+                    { title: 'Serena Hotel Show', date: 'FEB 15, 2025', location: 'Kampala, Uganda' },
+                    { title: 'Kingdem Kampala Show', date: 'FEB 22, 2025', location: 'Kampala, Uganda' },
+                    { title: 'Lugogo Cricket Oval Show', date: 'MAR 1, 2025', location: 'Kampala, Uganda' },
+                    { title: 'Kololo Airstrip Show', date: 'MAR 8, 2025', location: 'Kampala, Uganda' },
+                    { title: 'Nobview Ntinda Show', date: 'MAR 15, 2025', location: 'Kampala, Uganda' }
+                ];
+
+                // Search in music data
+                const music = [
+                    { title: 'City Lights', album: 'Street Life', year: '2024', streams: '2.5M' },
+                    { title: 'Night Rider', album: 'Street Life', year: '2024', streams: '1.8M' },
+                    { title: 'Downtown Flow', album: 'Urban Dreams', year: '2023', streams: '3.1M' },
+                    { title: 'City Beats', album: 'Urban Dreams', year: '2023', streams: '2.7M' }
+                ];
+
+                const searchTerm = query.toLowerCase();
+
+                // Search events
+                results.events = events.filter(event => 
+                    event.title.toLowerCase().includes(searchTerm) ||
+                    event.location.toLowerCase().includes(searchTerm) ||
+                    event.date.toLowerCase().includes(searchTerm)
+                );
+
+                // Search music
+                results.music = music.filter(track => 
+                    track.title.toLowerCase().includes(searchTerm) ||
+                    track.album.toLowerCase().includes(searchTerm)
+                );
+
+                // Display results
+                const totalResults = results.events.length + results.music.length;
+                searchStats.innerHTML = `Found ${totalResults} results for "${query}"`;
+
+                let html = '';
+
+                if (totalResults === 0) {
+                    html = `
+                        <div class="no-results">
+                            <p>No results found for "${query}"</p>
+                            <p>Try different keywords or check the spelling</p>
+                        </div>
+                    `;
+                } else {
+                    if (results.events.length > 0) {
+                        html += `
+                            <div class="result-section">
+                                <h2>Events (${results.events.length})</h2>
+                                ${results.events.map(event => `
+                                    <div class="result-item">
+                                        <div class="result-title">${event.title}</div>
+                                        <div class="result-info">${event.date} | ${event.location}</div>
+                                        <a href="events.html" class="result-link">View Event <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+
+                    if (results.music.length > 0) {
+                        html += `
+                            <div class="result-section">
+                                <h2>Music (${results.music.length})</h2>
+                                ${results.music.map(track => `
+                                    <div class="result-item">
+                                        <div class="result-title">${track.title}</div>
+                                        <div class="result-info">Album: ${track.album} | Year: ${track.year} | ${track.streams} streams</div>
+                                        <a href="music.html" class="result-link">Listen Now <i class="fas fa-play"></i></a>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+                }
+
+                searchResults.innerHTML = html;
+            }
+
+            // Add search functionality to search button
+            const searchBtn = document.getElementById('searchBtn');
+            const searchInput = document.getElementById('searchInput');
+
+            searchBtn.addEventListener('click', () => {
+                const query = searchInput.value.trim();
+                if (query) {
+                    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+                }
+            });
+
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

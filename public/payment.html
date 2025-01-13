@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Tickets - Glock 5 Concert Tour 2025</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .payment-container {
+            padding: 120px 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        .ticket-selection, .payment-summary {
+            background-color: #222;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .ticket-type {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .ticket-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .quantity-btn {
+            background: #333;
+            border: none;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .quantity {
+            font-size: 1.2rem;
+        }
+        
+        .payment-form {
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+        }
+        
+        .checkout-btn {
+            background-color: #e6b800;
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .payment-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .payment-methods {
+            margin: 2rem 0;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .payment-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            gap: 1rem;
+        }
+
+        .payment-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .payment-option:hover .payment-logo {
+            transform: scale(1.1);
+        }
+
+        .payment-option.selected .payment-logo {
+            transform: scale(1.1);
+        }
+
+        .payment-option span {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .mobile-money-instructions {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .mobile-money-instructions p {
+            margin: 0.8rem 0;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-money-instructions p::before {
+            content: '•';
+            color: #e6b800;
+            font-size: 1.5rem;
+        }
+
+        .payment-option {
+            background: #333;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            background: #444;
+            transform: translateY(-3px);
+        }
+
+        .payment-option.selected {
+            background: #e6b800;
+            color: #000;
+        }
+
+        .payment-option i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-option img {
+            height: 40px;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GLOCK 5 LIVE</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="payment.html" class="active">Tickets</a>
+                <a href="terms.html">Terms & Policy</a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search events...">
+                <button type="button" id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="payment-container">
+        <div class="ticket-selection">
+            <h2>Select Tickets</h2>
+            <div class="ticket-type">
+                <div>
+                    <h3>VIP Experience</h3>
+                    <p>Early entry, meet & greet, exclusive merchandise</p>
+                    <p class="price">$499.99</p>
+                </div>
+                <div class="ticket-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('vip', -1)">-</button>
+                    <span class="quantity" id="vip-quantity">0</span>
+                    <button class="quantity-btn" onclick="updateQuantity('vip', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="ticket-type">
+                <div>
+                    <h3>Premium Seating</h3>
+                    <p>Best views, dedicated entrance</p>
+                    <p class="price">$199.99</p>
+                </div>
+                <div class="ticket-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('premium', -1)">-</button>
+                    <span class="quantity" id="premium-quantity">0</span>
+                    <button class="quantity-btn" onclick="updateQuantity('premium', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="ticket-type">
+                <div>
+                    <h3>General Admission</h3>
+                    <p>Standard entry</p>
+                    <p class="price">$89.99</p>
+                </div>
+                <div class="ticket-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('general', -1)">-</button>
+                    <span class="quantity" id="general-quantity">0</span>
+                    <button class="quantity-btn" onclick="updateQuantity('general', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="payment-form">
+                <h2>Payment Information</h2>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="Your email for ticket delivery">
+                </div>
+                
+                <div class="payment-methods">
+                    <h3>Select Payment Method</h3>
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="selectPaymentMethod('card')">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Credit Card</span>
+                        </div>
+                        <div class="payment-option" onclick="selectPaymentMethod('airtel')">
+                            <img src="images/Screenshot 2025-01-13 150143.png" alt="Airtel Money" class="payment-logo">
+                            <span>Airtel Money</span>
+                        </div>
+                        <div class="payment-option" onclick="selectPaymentMethod('mtn')">
+                            <img src="images/Screenshot 2025-01-13 150243.png" alt="MTN Mobile Money" class="payment-logo">
+                            <span>MTN Mobile Money</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit Card Form -->
+                <div id="card-form" class="payment-method-form">
+                    <div class="form-group">
+                        <label for="cardName">Name on Card</label>
+                        <input type="text" id="cardName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry">Expiry Date</label>
+                        <input type="text" id="expiry" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" required>
+                    </div>
+                </div>
+
+                <!-- Airtel Money Form -->
+                <div id="airtel-form" class="payment-method-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="airtelNumber">Airtel Money Number</label>
+                        <input type="tel" id="airtelNumber" placeholder="07XX XXX XXX" required>
+                    </div>
+                    <div class="mobile-money-instructions">
+                        <p>1. Enter your Airtel Money number</p>
+                        <p>2. You will receive a prompt on your phone</p>
+                        <p>3. Enter your PIN to complete the payment</p>
+                    </div>
+                </div>
+
+                <!-- MTN Mobile Money Form -->
+                <div id="mtn-form" class="payment-method-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="mtnNumber">MTN Mobile Money Number</label>
+                        <input type="tel" id="mtnNumber" placeholder="07XX XXX XXX" required>
+                    </div>
+                    <div class="mobile-money-instructions">
+                        <p>1. Enter your MTN Mobile Money number</p>
+                        <p>2. You will receive a prompt on your phone</p>
+                        <p>3. Enter your PIN to complete the payment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-summary">
+            <h2>Order Summary</h2>
+            <div id="order-details">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <button class="checkout-btn" onclick="processPayment()">Complete Purchase</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="terms.html">Privacy Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p>&copy; 2025 Glock 5 Concert Tour. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const prices = {
+            vip: 499.99,
+            premium: 199.99,
+            general: 89.99
+        };
+        
+        function updateQuantity(type, change) {
+            const element = document.getElementById(`${type}-quantity`);
+            let quantity = parseInt(element.textContent);
+            quantity = Math.max(0, quantity + change);
+            element.textContent = quantity;
+            updateOrderSummary();
+        }
+        
+        function updateOrderSummary() {
+            const orderDetails = document.getElementById('order-details');
+            let html = '';
+            let total = 0;
+            
+            for (const [type, price] of Object.entries(prices)) {
+                const quantity = parseInt(document.getElementById(`${type}-quantity`).textContent);
+                if (quantity > 0) {
+                    const subtotal = quantity * price;
+                    total += subtotal;
+                    html += `
+                        <div class="ticket-type">
+                            <p>${type.charAt(0).toUpperCase() + type.slice(1)} Ticket x${quantity}</p>
+                            <p>$${subtotal.toFixed(2)}</p>
+                        </div>
+                    `;
+                }
+            }
+            
+            html += `
+                <div class="ticket-type">
+                    <strong>Total</strong>
+                    <strong>$${total.toFixed(2)}</strong>
+                </div>
+            `;
+            
+            orderDetails.innerHTML = html;
+        }
+        
+        function selectPaymentMethod(method) {
+            // Hide all forms
+            document.querySelectorAll('.payment-method-form').forEach(form => {
+                form.style.display = 'none';
+            });
+            
+            // Remove selected class from all options
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Show selected form and highlight option
+            document.getElementById(`${method}-form`).style.display = 'block';
+            event.currentTarget.classList.add('selected');
+        }
+
+        function processPayment() {
+            const email = document.getElementById('email').value;
+            if (!email) {
+                alert('Please enter your email address for ticket delivery.');
+                return;
+            }
+
+            // Get selected payment method
+            const selectedMethod = document.querySelector('.payment-option.selected');
+            if (!selectedMethod) {
+                alert('Please select a payment method.');
+                return;
+            }
+
+            // Validate based on payment method
+            const method = selectedMethod.querySelector('span').textContent.toLowerCase();
+            if (method.includes('airtel')) {
+                const number = document.getElementById('airtelNumber').value;
+                if (!number) {
+                    alert('Please enter your Airtel Money number.');
+                    return;
+                }
+                alert(`A payment prompt has been sent to your Airtel Money number. Please check your phone to complete the payment. Your tickets will be sent to ${email} after payment confirmation.`);
+            } else if (method.includes('mtn')) {
+                const number = document.getElementById('mtnNumber').value;
+                if (!number) {
+                    alert('Please enter your MTN Mobile Money number.');
+                    return;
+                }
+                alert(`A payment prompt has been sent to your MTN Mobile Money number. Please check your phone to complete the payment. Your tickets will be sent to ${email} after payment confirmation.`);
+            } else {
+                // Credit card validation
+                const cardFields = ['cardName', 'cardNumber', 'expiry', 'cvv'];
+                for (const field of cardFields) {
+                    if (!document.getElementById(field).value) {
+                        alert('Please fill in all card details.');
+                        return;
+                    }
+                }
+                alert(`Thank you for your purchase! Your tickets will be sent to ${email} shortly.`);
+            }
+        }
+    </script>
+</body>
+</html>

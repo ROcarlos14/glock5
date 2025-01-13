@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music - Glock 5</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .music-container {
+            padding: 120px 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .album-card {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .album-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .album-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .album-info {
+            padding: 1.5rem;
+        }
+
+        .album-title {
+            font-size: 1.5rem;
+            color: #e6b800;
+            margin-bottom: 0.5rem;
+        }
+
+        .album-year {
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .track-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .track-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .track-info {
+            flex: 1;
+        }
+
+        .track-title {
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .track-stats {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .play-btn {
+            background: #e6b800;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(230, 184, 0, 0.3);
+        }
+
+        .play-btn i {
+            color: #000;
+        }
+
+        .streaming-platforms {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .platform-link {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .platform-link:hover {
+            color: #e6b800;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GLOCK 5 LIVE</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="music.html" class="active">Music</a>
+                <a href="payment.html">Tickets</a>
+                <a href="terms.html">Terms & Policy</a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search music...">
+                <button type="button" id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="music-container">
+        <h1>Music</h1>
+        <div class="album-grid">
+            <div class="album-card">
+                <img src="https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Street Life Album" class="album-image">
+                <div class="album-info">
+                    <h2 class="album-title">Street Life</h2>
+                    <p class="album-year">2024</p>
+                    <ul class="track-list">
+                        <li class="track-item">
+                            <div class="track-info">
+                                <div class="track-title">City Lights</div>
+                                <div class="track-stats">
+                                    <span>2.5M streams</span> • <span>3:45</span>
+                                </div>
+                            </div>
+                            <button class="play-btn" onclick="playAudio('audio1')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <audio id="audio1" src="path/to/audio1.mp3"></audio>
+                        </li>
+                        <li class="track-item">
+                            <div class="track-info">
+                                <div class="track-title">Night Rider</div>
+                                <div class="track-stats">
+                                    <span>1.8M streams</span> • <span>4:20</span>
+                                </div>
+                            </div>
+                            <button class="play-btn" onclick="playAudio('audio2')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <audio id="audio2" src="path/to/audio2.mp3"></audio>
+                        </li>
+                    </ul>
+                    <div class="streaming-platforms">
+                        <a href="#" class="platform-link"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="platform-link"><i class="fab fa-apple"></i></a>
+                        <a href="#" class="platform-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card">
+                <img src="https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Urban Dreams Album" class="album-image">
+                <div class="album-info">
+                    <h2 class="album-title">Urban Dreams</h2>
+                    <p class="album-year">2023</p>
+                    <ul class="track-list">
+                        <li class="track-item">
+                            <div class="track-info">
+                                <div class="track-title">Downtown Flow</div>
+                                <div class="track-stats">
+                                    <span>3.1M streams</span> • <span>3:55</span>
+                                </div>
+                            </div>
+                            <button class="play-btn" onclick="playAudio('audio3')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <audio id="audio3" src="path/to/audio3.mp3"></audio>
+                        </li>
+                        <li class="track-item">
+                            <div class="track-info">
+                                <div class="track-title">City Beats</div>
+                                <div class="track-stats">
+                                    <span>2.7M streams</span> • <span>4:10</span>
+                                </div>
+                            </div>
+                            <button class="play-btn" onclick="playAudio('audio4')">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <audio id="audio4" src="path/to/audio4.mp3"></audio>
+                        </li>
+                    </ul>
+                    <div class="streaming-platforms">
+                        <a href="#" class="platform-link"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="platform-link"><i class="fab fa-apple"></i></a>
+                        <a href="#" class="platform-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="terms.html">Privacy Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p>&copy; 2025 Glock 5 Concert Tour. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentAudio = null;
+
+        function playAudio(audioId) {
+            const audio = document.getElementById(audioId);
+            const button = audio.parentElement.querySelector('.play-btn i');
+
+            if (currentAudio && currentAudio !== audio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio.parentElement.querySelector('.play-btn i').className = 'fas fa-play';
+            }
+
+            if (audio.paused) {
+                audio.play();
+                button.className = 'fas fa-pause';
+                currentAudio = audio;
+            } else {
+                audio.pause();
+                button.className = 'fas fa-play';
+                currentAudio = null;
+            }
+        }
+    </script>
+</body>
+</html>
