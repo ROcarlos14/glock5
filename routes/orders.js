@@ -48,8 +48,8 @@ router.post('/', async (req, res) => {
             case 'card':
                 // Process Stripe payment
                 paymentResult = await stripe.paymentIntents.create({
-                    amount: req.body.totalAmount * 100, // Stripe uses cents
-                    currency: 'usd',
+                    amount: req.body.totalAmount, // UGX amount (no cents)
+                    currency: 'ugx',
                     payment_method: req.body.paymentMethodId,
                     confirm: true
                 });

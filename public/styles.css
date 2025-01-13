@@ -322,16 +322,31 @@ nav {
 footer {
     background: linear-gradient(to top, #000, #111);
     padding: 3rem 5%;
+    position: relative;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .social-links {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
 .social-links a {
     font-size: 1.5rem;
-    margin: 0 1rem;
+    color: #fff;
     transition: all 0.3s ease;
+    display: inline-block;
 }
 
 .social-links a:hover {
@@ -339,14 +354,27 @@ footer {
     transform: translateY(-3px);
 }
 
+.footer-links {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
 .footer-links a {
     color: #888;
     text-decoration: none;
-    margin: 0 1rem;
+    transition: color 0.3s ease;
 }
 
-.footer-links {
-    margin-bottom: 1rem;
+.footer-links a:hover {
+    color: #e6b800;
+}
+
+.footer-content p {
+    color: #666;
+    font-size: 0.9rem;
 }
 
 /* Responsive Design */

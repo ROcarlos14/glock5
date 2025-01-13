@@ -206,7 +206,7 @@
                 <div>
                     <h3>VIP Experience</h3>
                     <p>Early entry, meet & greet, exclusive merchandise</p>
-                    <p class="price">$499.99</p>
+                    <p class="price">UGX 1,875,000</p>
                 </div>
                 <div class="ticket-controls">
                     <button class="quantity-btn" onclick="updateQuantity('vip', -1)">-</button>
@@ -219,7 +219,7 @@
                 <div>
                     <h3>Premium Seating</h3>
                     <p>Best views, dedicated entrance</p>
-                    <p class="price">$199.99</p>
+                    <p class="price">UGX 750,000</p>
                 </div>
                 <div class="ticket-controls">
                     <button class="quantity-btn" onclick="updateQuantity('premium', -1)">-</button>
@@ -232,7 +232,7 @@
                 <div>
                     <h3>General Admission</h3>
                     <p>Standard entry</p>
-                    <p class="price">$89.99</p>
+                    <p class="price">UGX 337,500</p>
                 </div>
                 <div class="ticket-controls">
                     <button class="quantity-btn" onclick="updateQuantity('general', -1)">-</button>
@@ -341,9 +341,9 @@
 
     <script>
         const prices = {
-            vip: 499.99,
-            premium: 199.99,
-            general: 89.99
+            'vip': 1875000,
+            'premium': 750000,
+            'general': 337500
         };
         
         function updateQuantity(type, change) {
@@ -367,7 +367,7 @@
                     html += `
                         <div class="ticket-type">
                             <p>${type.charAt(0).toUpperCase() + type.slice(1)} Ticket x${quantity}</p>
-                            <p>$${subtotal.toFixed(2)}</p>
+                            <p>UGX ${subtotal.toLocaleString()}</p>
                         </div>
                     `;
                 }
@@ -376,7 +376,7 @@
             html += `
                 <div class="ticket-type">
                     <strong>Total</strong>
-                    <strong>$${total.toFixed(2)}</strong>
+                    <strong>UGX ${total.toLocaleString()}</strong>
                 </div>
             `;
             
